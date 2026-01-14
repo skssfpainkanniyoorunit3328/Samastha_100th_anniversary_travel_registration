@@ -90,7 +90,6 @@ document.addEventListener('DOMContentLoaded', function() {
             // Send URL-encoded data
             const response = await fetch(scriptUrl, {
                 method: 'POST',
-                mode: 'no-cors',
                 cache: 'no-cache',
                 redirect: 'follow',
                 headers: {
@@ -142,4 +141,5 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 });
+
 
