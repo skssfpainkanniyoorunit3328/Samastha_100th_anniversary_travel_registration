@@ -30,23 +30,24 @@ function saveToSpreadsheet(data) {
   // Set headers if this is the first row
   if (sheet.getLastRow() === 0) {
     const headers = [
-      'Timestamp', 'Name', 'Age', 'Address', 'Phone', 'Email', 'WhatsApp', 'Photo', 'Consent'
-    ];
+  'Timestamp', 'Name', 'Age', 'Address', 'Phone', 'Email',
+  'WhatsApp', 'Consent'
+  ];
     sheet.appendRow(headers);
   }
   
   // Prepare row data
-  const row = [
-    new Date().toISOString(),
-    data.name,
-    data.age,
-    data.address,
-    data.phone,
-    data.email,
-    data.whatsapp,
-    data.photo || 'No photo',
-    data.consent ? 'Yes' : 'No'
-  ];
+const row = [
+  new Date().toISOString(),
+  data.name,
+  data.age,
+  data.address,
+  data.phone,
+  data.email,
+  data.whatsapp,
+  data.consent ? 'Yes' : 'No'
+];
+
   
   // Append the data
   sheet.appendRow(row);
@@ -122,3 +123,4 @@ function handleEmailConfirmation(data) {
     })).setMimeType(ContentService.MimeType.JSON);
   }
 }
+
