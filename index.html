@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>സമസ്ത വാർഷിക സമ്മേളന യാത്ര രജിസ്ട്രേഷൻ</title>
+    <link rel="icon" sizes="32x32" href="./image/curved.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @media (max-width: 768px) {
+            .header-text {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <header>
+            <img src="./image/form_photo.jpg" alt="100-ാം വാർഷിക സമ്മേളന പോസ്റ്റർ" class="poster">
+            <div class="header-content">
+                <div class="header-text">
+                    <h1>100-ാം വാർഷിക സമ്മേളനത്തിലേക്ക് പോകാനുള്ള യാത്ര രജിസ്റ്ററേഷൻ</h1>
+                    <p class="subtitle">സമസ്ത കേരള ജംഇയ്യതുള്‍ ഉലമാ</p>
+                </div>
+                <div class="contact-box">
+                    <h3>കൂടുതൽ വിവരങ്ങൾക്ക് :</h3>
+                    <ul>
+                        <li>ഇസ്മായിൽ ഹനീഫ് അൻവരി : 90202 35004</li>
+                        <li>ഷംസുദീൻ ഫൈസി : 99476 44929</li>
+                        <li>മുഹമ്മദലി മുസ്ലിയാർ : 95448 44436</li>
+                        <li>അബ്ദുൽ ഹഖ് കുട്ടോത്ത് : 81118 67010</li>
+                        <li>നാസിൽ നാസർ : 81388 44984</li>
+                        <li>ഫഹീം ഇബ്രാഹിം : 81370 22418</li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <form id="registrationForm" class="registration-form">
+
+            <input type="hidden" id="scriptUrl"
+                value="https://script.google.com/macros/s/AKfycbwVhKeMDX2qXDzdy6EsjKOHl8Gi1eOMEJMSRnOLhPJk3vKnHrfznpjo8WODJ7ogyakL/exec">
+
+            <div class="form-group">
+                <label for="name">പേര് (Name) <span class="required">*</span></label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="age">വയസ് (Age) <span class="required">*</span></label>
+                <input type="number" id="age" name="age" min="1" max="120" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">മേൽവിലാസം (Address) <span class="required">*</span></label>
+                <textarea id="address" name="address" rows="3" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">ഫോൺ നമ്പർ (Phone Number) <span class="required">*</span></label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+                <small>10 അക്ക നമ്പർ നൽകുക (Enter 10 digit number)</small>
+            </div>
+
+            <div class="form-group">
+                <label for="email">ഇമെയിൽ (Email) <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="whatsapp">വാട്ട്സാപ്പ് നമ്പർ (WhatsApp Number) <span class="required">*</span></label>
+                <div class="input-with-country">
+                    <span class="country-code">+91</span>
+                    <input type="tel" id="whatsapp" name="whatsapp" pattern="[0-9]{10}" required>
+                </div>
+                <small>10 അക്ക നമ്പർ നൽകുക (Enter 10 digit number)</small>
+            </div>
+
+            <div class="form-group">
+                <label for="photo">ഫോട്ടോ അപ്‌ലോഡ് ചെയ്യുക (Upload Photo) <span class="required">*</span></label>
+                <div class="file-upload">
+                    <input type="file" id="photo" name="photo" accept="image/*" required>
+                    <label for="photo" class="file-upload-label">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <span>ഫയൽ തിരഞ്ഞെടുക്കുക (Choose File)</span>
+                    </label>
+                    <span id="file-name">ഒരു ഫയൽ തിരഞ്ഞെടുത്തിട്ടില്ല (No file chosen)</span>
+                </div>
+                <small>അംഗീകൃത ഫോർമാറ്റുകൾ: JPG, PNG (Max 2MB)</small>
+            </div>
+
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="consent" name="consent" required>
+                <label for="consent">മുകളിൽ നൽകിയ വിവരങ്ങൾ ശരിയാണെന്നും സമസ്തയുടെ 100-ാം വാർഷിക സമ്മേളനത്തിൽ
+                    പങ്കെടുക്കാനുള്ള എന്റെ താൽപ്പര്യം സ്ഥിരീകരിക്കുന്നു. (I confirm that the above details are correct
+                    and I'm interested in participating in the 100th Annual Conference of Samastha) <span
+                        class="required">*</span></label>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                <span>രജിസ്റ്റർ ചെയ്യുക (Register)</span>
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </form>
+    </div>
+
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>നന്ദി! (Thank You!)</h2>
+            <p>നിങ്ങളുടെ രജിസ്ട്രേഷൻ വിജയകരമായി സമർപ്പിച്ചു. (Your registration has been submitted successfully.)</p>
+            <p>വാട്ട്സാപ്പ് സന്ദേശത്തിലൂടെ ഒരു സ്ഥിരീകരണം ലഭിക്കും. (You will receive a confirmation via WhatsApp.)</p>
+            <button id="closeModal" class="close-btn">ശരി (OK)</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
