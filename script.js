@@ -103,43 +103,63 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Since we're using no-cors mode, we can't read the response
             // But we'll assume success if we don't get an error
-            try {
-                // Show success message
-                if (modalContent && successModal) {
-                    modalContent.innerHTML = `
-                        <p>നിങ്ങളുടെ രജിസ്ട്രേഷൻ വിജയകരമായി സമർപ്പിച്ചു. (Your registration has been submitted successfully.)</p>
-                        <p>നിങ്ങളുടെ ഇമെയിലിൽ ഒരു സ്ഥിരീകരണം അയച്ചിട്ടുണ്ട്. (A confirmation has been sent to your email.)</p>
-                    `;
-                    successModal.style.display = 'block';
-                    form.reset();
-                    const fileNameElement = document.getElementById('file-name');
-                    if (fileNameElement) {
-                        fileNameElement.textContent = 'ഒരു ഫയൽ തിരഞ്ഞെടുത്തിട്ടില്ല (No file chosen)';
-                    }
-                    // Scroll to top to show the success message
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
-            } catch (error) {
-                console.error('Error showing success message:', error);
-                alert('Registration submitted successfully!');
-            }
-        } catch (error) {
-            console.error('Error details:', {
-                message: error.message,
-                name: error.name,
-                data: urlEncoded.toString()
-            });
-            alert(`Error: ${error.message || 'An error occurred while submitting the form. Please try again.'}`);
-        } finally {
-            // Reset button state
-            const submitButton = form.querySelector('button[type="submit"]');
-            if (submitButton) {
-                submitButton.disabled = false;
-                submitButton.innerHTML = 'Submit';
-            }
+           try {
+    // Show loading state
+    const submitButton = form.querySelector('button[type="submit"]');
+    const originalButtonText = submitButton.innerHTML;
+    submitButton.disabled = true;
+    submitButton.innerHTML = 'Submitting...';
+
+    console.log('Sending data to Google Apps Script:', urlEncoded.toString());
+    
+    // Send URL-encoded data
+    const response = await fetch(scriptUrl, {
+        method: 'POST',
+        cache: 'no-cache',
+        redirect: 'follow',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+        },
+        body: urlEncoded.toString()
+    });
+
+    // Parse JSON response
+    const result = await response.json();
+    console.log('Form submission result:', result);
+
+    if (result.status === 'success') {
+        // Show success modal
+        if (modalContent && successModal) {
+            modalContent.innerHTML = `
+                <p>നിങ്ങളുടെ രജിസ്ട്രേഷൻ വിജയകരമായി സമർപ്പിച്ചു. (Your registration has been submitted successfully.)</p>
+                <p>നിങ്ങളുടെ ഇമെയിലിൽ ഒരു സ്ഥിരീകരണം അയച്ചിട്ടുണ്ട്. (A confirmation has been sent to your email.)</p>
+            `;
+            successModal.style.display = 'block';
+            form.reset();
         }
+    } else {
+        alert('Error: ' + result.message);
+    }
+
+} catch (error) {
+    console.error('Error details:', {
+        message: error.message,
+        name: error.name,
+        data: urlEncoded.toString()
+    });
+    alert(`Error: ${error.message || 'An error occurred while submitting the form. Please try again.'}`);
+} finally {
+    // Reset button state
+    const submitButton = form.querySelector('button[type="submit"]');
+    if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.innerHTML = 'Submit';
+    }
+}
+
     });
 
 });
+
 
 
