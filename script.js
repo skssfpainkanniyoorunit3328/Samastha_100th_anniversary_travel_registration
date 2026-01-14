@@ -77,13 +77,6 @@ document.addEventListener('DOMContentLoaded', function() {
         urlEncoded.append('whatsapp', formValues.whatsapp || formValues.phone || '');
         urlEncoded.append('consent', formValues.consent ? 'true' : 'false');
         urlEncoded.append('timestamp', new Date().toISOString());
-        
-        // Handle file upload if a file is selected
-        if (photoInput && photoInput.files.length > 0) {
-            urlEncoded.append('photo', photoInput.files[0].name);
-        } else {
-            urlEncoded.append('photo', 'No file uploaded');
-        }
 
         try {
             // Show loading state
@@ -149,3 +142,4 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 });
+
