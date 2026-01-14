@@ -32,18 +32,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
 
-    // Handle file input change if the element exists
-    const photoInput = document.getElementById('photo');
-    if (photoInput) {
-        photoInput.addEventListener('change', function(e) {
-            const fileName = e.target.files[0] ? e.target.files[0].name : 'ഒരു ഫയൽ തിരഞ്ഞെടുത്തിട്ടില്ല (No file chosen)';
-            const fileNameElement = document.getElementById('file-name');
-            if (fileNameElement) {
-                fileNameElement.textContent = fileName;
-            }
-        });
-    }
-
     // Close modal when clicking the close button if it exists
     const closeButton = document.getElementById('closeModal');
     if (closeButton && successModal) {
@@ -159,4 +147,5 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+
 });
